@@ -111,7 +111,7 @@ article {
 
 .mainWrapper {
     width: 60%;
-    padding-right: 40px;
+    padding: 0 40px 50px 0;
 }
 
 .form, .formData, .wallet {
@@ -253,6 +253,32 @@ article {
     padding: 0 7px;
 }
 
+.assetManagement {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 0;
+}
+
+.assetButton {
+    background-color: #000;
+    color: #02B302;
+    padding: 7px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #02B302;
+    box-shadow: 3px 3px 2px #666;
+    cursor: pointer;
+}
+
+.addToken {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+/* FOOTER */
+
 footer {
     width: 100%;
     background-color: #fafafa;
@@ -274,4 +300,45 @@ footer a {
 
 .footerMenu {
     
+}
+
+
+@media (max-width: 900px) {
+    nav, .wallet {
+        display: none;
+    }
+
+    article {
+        padding: 150px 10px 50px 10px;
+    }
+
+    .mainWrapper {
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .form input {
+        margin-left: 0;
+    }
+
+    .dataInRow {
+        margin: 0 !important;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+
+    .assets {
+        padding: 0;
+    }
+
+    footer {
+        flex-direction: column-reverse;
+    }
+
+    .build {
+        width: 100%;
+        padding-top: 20px;
+    }
 }
