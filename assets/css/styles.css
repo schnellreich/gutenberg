@@ -1,0 +1,277 @@
+* {
+    -webkit-locale: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+a {
+    color: #02B302;
+    text-decoration: none;
+    border-bottom: 6px solid #02B302;
+}
+
+a:hover {
+    background-color: #02B302;
+    color: #fff;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    font-family: 'Cousine', monospace;
+    z-index: 100;
+    display: flex;
+    flex-flow: row wrap;
+    background-color: #fff;
+    min-height: 55px;
+}
+
+.logo {
+    font-family: 'Cousine', monospace;
+    font-size: 22px;
+    padding: 10px;
+    width: 20%;
+    font-weight: bold;
+    color: #02B302;
+}
+
+nav {
+    width: 65%;
+}
+
+.menu {
+    list-style: none;
+    display: inline-flex;
+    margin: 0;
+}
+
+nav li {
+    padding: 10px 25px 10px 0;
+    color: #666;
+}
+
+.liActive {
+    color: #000;
+    font-weight: bold;
+}
+
+.wallet {
+    position: relative;
+    width: 15%;
+}
+
+.connect {
+    border: 2px solid #02B302;
+    background-color: #fff;
+    border-radius: 7px;
+    padding: 5px 10px 10px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.connect img {
+    position: relative;
+    bottom: -3px;
+}
+
+/* CONTENT */
+
+h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+article {
+    padding: 150px 10px 50px 20%;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.mainWrapper {
+    width: 60%;
+    padding-right: 40px;
+}
+
+.form, .formData, .wallet {
+    display: flex;
+    flex-direction: column;
+}
+
+.formData {
+    padding-bottom: 15px;
+}
+
+.form input {
+    border: 1px solid #02B302;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-left: -11px;
+}
+
+.collapsible {
+    cursor: pointer;
+    width: 100%;
+}
+
+.tokenOptions {
+    border-bottom: 2px solid #02B302;
+    border-right: none;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: left;
+    background-color: #fff;
+    padding: 10px 0;
+    margin-bottom: 15px;
+}
+
+.collapsible:active {
+    border: none;
+}
+  
+.content {
+    display: none;
+    overflow: hidden;
+}
+
+.formRow {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+}
+
+.dataInRow {
+    margin-left: 20px !important;
+    width: 40%;
+}
+
+.plusButton {
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 0 20px 10px;
+}
+
+.addFields {
+    background-color: #02B302;
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #02B302;
+    border-radius: 999999px;
+}
+
+.printerField {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    padding-top: 30px;
+}
+
+.print {
+    background-color: #fff;
+    color: #02B302;
+    padding: 7px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #02B302;
+    box-shadow: 3px 3px 2px #666;
+    cursor: pointer;
+}
+
+.print:hover {
+    background-color: #02B302;
+    color: #fff;
+    box-shadow: 1px 1px 1px #333;
+}
+
+/* WALLET */
+
+.sidebar {
+    background-color: #000;
+    color: #fff;
+    border-radius: 16px;
+    padding: 0 20px 20px;
+    width: 40%;
+    height: fit-content;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.assets {
+    width: 100%;
+    padding: 20px;
+}
+
+.asset {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    cursor: pointer;
+}
+
+.asset:hover {
+    background-color: #333;
+}
+
+.assetIcon, .assetName, .assetQ {
+    padding: 7px;
+}
+
+.assetQ {
+    margin-left: auto;
+}
+
+.assetInfo {
+    padding: 0 7px;
+}
+
+footer {
+    width: 100%;
+    background-color: #fafafa;
+    color: #666;
+    font-size: 0.9em;
+    display: flex;
+    padding: 20px 10px;
+}
+
+footer a {
+    color: #666;
+    border: none;
+    text-decoration: underline;
+}
+
+.build {
+    width: 20%;
+}
+
+.footerMenu {
+    
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gutenberg | Web3 Typography</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Cousine&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            Gutenberg
+        </div>
+        <nav>
+            <ul class="menu">
+                <li class="liActive">Token</li>
+                <li>NFT</li>
+                <li>Upload</li>
+                <li>Subkeys</li>
+                <li>Help</li>
+            </ul>
+        </nav>
+        <div class="wallet">
+            <button class="connect">
+                <img src="/assets/img/wallet.svg" height="20px">
+                <span style="margin: auto;">Connect Wallet</span>
+            </button>
+        </div>
+    </header>
+    <article>
+        <p>
+            This ultra-modern technology allows to create, mint and manage any possible number of fungible tokens.<br>
+            In case of any difficulties, read the <a href="/help#token/">instruction</a>.
+        </p>
+        <div class="mainWrapper">
+        <h1>Create New Token</h1>
+            <div class="form">
+                <div class="formData">
+                    <label>Token's Name:</label>
+                    <input placeholder="John's USD Obligations" type="text">
+                </div>
+                <div class="formData">
+                    <label>Symbol:</label>
+                    <input placeholder="JUSD" type="text">
+                </div>
+                <div class="formData">
+                    <label>Quantity:</label>
+                    <input placeholder="0" type="number">
+                </div>
+                <div class="formData">
+                    <label>Decimals:</label>
+                    <input placeholder="0" type="number">
+                </div>
+                <button type="button" class="collapsible tokenOptions">+ Change Initial Balances</button>
+                <div class="content">
+                    By default all new tokens will be transfered to your wallet. You can change that.
+                    <div class="formRow">
+                        <div class="formData dataInRow">
+                            <label>Wallet Address:</label>
+                            <input placeholder="bostrom12345678901234567890" type="text">
+                        </div>
+                        <div class="formData dataInRow">
+                            <label>Balance:</label>
+                            <input placeholder="0" type="number">
+                        </div>
+                        <div class="plusButton">
+                            <button class="addFields">+</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="collapsible tokenOptions">+ Marketing Details</button>
+                <div class="content">
+                    <p>This information will be displayed in the description of the created token:</p>
+                    <div class="formData">
+                        <label>Project's Name:</label>
+                        <input placeholder="John Owes You" type="text">
+                    </div>
+                    <div class="formData">
+                        <label>Project's Description:</label>
+                        <input placeholder="If you know John, you know what to do with this token" type="text">
+                    </div>
+                    <div class="formData">
+                        <label>Public Wallet:</label>
+                        <input placeholder="bostrom12345678901234567890" type="text">
+                    </div>
+                    <div class="formData">
+                        <label>Logo URL:</label>
+                        <input placeholder="https://yoursite.com/logo.jpg" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="printerField">
+                <button class="print" type="submit">BRRRRRRRR!</button>
+            </div>
+        </div>
+        <div class="sidebar">
+            <h2>Manage Tokens</h2>
+            <div class="assets">
+                <div class="asset collapsible">
+                    <div class="assetIcon">🟢</div>
+                    <div class="assetName">BOOT</div>
+                    <div class="assetQ">3 000 000 000</div>
+                </div>
+                <div class="content assetInfo">
+                    <b>Bostrom</b> — The Marketing Information
+                </div>
+                <div class="asset collapsible">
+                    <div class="assetIcon">🇬🇪</div>
+                    <div class="assetName">KLARI</div>
+                    <div class="assetQ">1 000</div>
+                </div>
+                <div class="content assetInfo">
+                    <b>LARI by Kosta</b> — Take My Money and Shut Up<br>
+                    <a href="#">Manage Token</a>
+                </div>
+            </div>
+        </div>
+    </article>
+    <footer>
+        <div class="build">
+            🟢 Powered by <a href="/https://cyb.ai">Bostrom</a>
+        </div>
+        <div class="footerMenu">
+            <a href="https://en.wikipedia.org/wiki/Johannes_Gutenberg">About</a> |
+            <a href="https://cyb.ai/gift">Boots Fauсet</a> |
+            <a href="#">License</a> |
+            <a href="#">Privacy & Coockies Policy</a> |
+            <a href="#">Legal Disclaimer</a>
+        </div>
+    </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script  src="/assets/js/collapse.js"></script>
+</body>
+</html>
