@@ -114,7 +114,7 @@ article {
     padding: 0 40px 50px 0;
 }
 
-.form, .formData, .wallet {
+.form, .formData, .assets {
     display: flex;
     flex-direction: column;
 }
@@ -129,6 +129,13 @@ article {
     font-size: 16px;
     border-radius: 7px;
     margin-left: -11px;
+}
+
+cite {
+    font-size: 13px;
+    color: #666;
+    font-style: initial;
+    margin-top: -4px;
 }
 
 .collapsible {
@@ -153,7 +160,7 @@ article {
   
 .content {
     display: none;
-    overflow: hidden;
+    overflow: initial;
 }
 
 .formRow {
@@ -227,7 +234,7 @@ article {
 
 .assets {
     width: 100%;
-    padding: 20px;
+    padding: 20px 0;
 }
 
 .asset {
@@ -251,6 +258,8 @@ article {
 
 .assetInfo {
     padding: 0 7px;
+    font-size: 14px;
+    line-height: 1em;
 }
 
 .assetManagement {
