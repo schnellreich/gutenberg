@@ -342,7 +342,7 @@ cite {
   width: 712px;
   height: 48px;
   left: 32px;
-  top: 670px;
+  top: 685px;
 
   background: #122024;
   color: #e2fb5f;
@@ -513,7 +513,7 @@ cite {
   flex-direction: column;
   gap: 16px;
   left: 32px;
-  top: 353px;
+  top: 253px;
   position: relative;
 }
 
@@ -557,28 +557,28 @@ cite {
 
 .line {
   width: 304px;
-  border: 1.5px solid #717779;
+  border: 1px solid #717779;
 }
-.group {
-  width: 302px;
-  height: 16px;
-  top: 16px;
-  left: 2px;
-  position: absolute;
-}
-.klari {
-  text-align: left;
-  vertical-align: text-top;
-  font-size: 14px;
-  font-family: Roboto;
-  left: 2px;
-  top: 16px;
-  width: 56px;
-  height: 16px;
-  position: absolute;
-  line-height: auto;
+
+.asset {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  cursor: pointer;
   color: #ffffff;
-  margin: 10px;
+}
+
+.asset:hover {
+  background-color: #333;
+}
+.assetIcon,
+.assetName,
+.assetQ {
+  padding: 7px;
+}
+
+.assetQ {
+  margin-left: auto;
 }
 
 /* FOOTER */
