@@ -1,159 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gutenberg | Web3 Typography</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Cousine&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="icon" type="image/png" href="./favicon.png">
-</head>
-<body>
+    <link rel="stylesheet" href="./assets/css/styles.css" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+  </head>
+  <body>
     <header>
-        <div class="logo">
-            Gutenberg
+      <div class="hero">
+        <div class="gutenberg">gutenberg</div>
+        <div class="tool-desc">
+          This ultra-modern technology allows to create, mint and manage any
+          possible number of fungible tokens. In case of any difficulties, read
+          the <a href="/help#token/">instruction</a>.
         </div>
-        <nav>
-            <ul class="menu">
-                <li class="liActive">Token</li>
-                <li>NFT</li>
-                <li>Upload</li>
-                <li>Subkeys</li>
-                <li>Help</li>
-            </ul>
-        </nav>
-        <div class="wallet">
-            <button class="connect">
-                <img src="./assets/img/wallet.svg" height="20px">
-                <span style="margin: auto;">Connect Wallet</span>
-            </button>
-        </div>
+      </div>
+      <button id="connect-wallet-button" class="connect-wallet-button">
+        Connect wallet
+      </button>
+      <div id="subkeys" class="subkeys">Subkeys</div>
+      <div id="help" class="help">Help</div>
     </header>
-    <article>
-        <p>
-            This ultra-modern technology allows to create, mint and manage any possible number of fungible tokens.<br>
-            In case of any difficulties, read the <a href="/help#token/">instruction</a>.
-        </p>
-        <div class="mainWrapper">
-        <h1>Create New Token</h1>
-            <div class="form">
-                <div class="formData">
-                    <label>Token's Name:</label>
-                    <input placeholder="John's USD Obligations" type="text">
-                    <cite>You can specify any name you like. But it is better to come up with something original</cite>
-                </div>
-                <div class="formData">
-                    <label>Symbol:</label>
-                    <input placeholder="JUSD" type="text">
-                    <cite>How your token will be displayed in users' wallets</cite>
-                </div>
-                <div class="formData">
-                    <label>Quantity:</label>
-                    <input placeholder="0" type="number">
-                </div>
-                <div class="formData">
-                    <label>Decimals:</label>
-                    <input placeholder="0" type="number">
-                    <cite>Number of digits after the comma for the minimum value of the token count (e.g., Bitcoin has 8 digits)</cite>
-                </div>
-                <div class="formData">
-                    <label>Logo URL:</label>
-                    <input placeholder="https://yoursite.com/logo.jpg" type="text">
-                </div>
-                <button type="button" class="collapsible tokenOptions">+ Change Initial Balances</button>
-                <div class="content">
-                    By default all new tokens will be transfered to your wallet. You can change that.
-                    <div class="formRow">
-                        <div class="formData dataInRow">
-                            <label>Wallet Address:</label>
-                            <input placeholder="bostrom12345678901234567890" type="text">
-                        </div>
-                        <div class="formData dataInRow">
-                            <label>Balance:</label>
-                            <input placeholder="0" type="number">
-                        </div>
-                        <div class="plusButton">
-                            <button class="addFields">+</button>
-                        </div>
-                    </div>
-                </div>
-                <button type="button" class="collapsible tokenOptions">+ Marketing Details</button>
-                <div class="content">
-                    <p>This information will be displayed in the description of the created token:</p>
-                    <div class="formData">
-                        <label>Project's Name:</label>
-                        <input placeholder="John Owes You" type="text">
-                    </div>
-                    <div class="formData">
-                        <label>Project's Description:</label>
-                        <input placeholder="If you know John, you know what to do with this token" type="text">
-                    </div>
-                    <div class="formData">
-                        <label>Public Wallet:</label>
-                        <input placeholder="bostrom12345678901234567890" type="text">
-                    </div>
-                </div>
-            </div>
-            <div class="printerField">
-                <button class="print" type="submit">BRRRRRRRR!</button>
-            </div>
+
+    <container>
+      <div class="main">
+        <div class="buttons">
+          <button id="token-page" class="button">Token</button>
+          <button id="nft-page" class="button">NFT</button>
+          <button id="upload-page" class="button">Upload</button>
         </div>
-        <div class="sidebar">
-            <h2>Manage Tokens</h2>
-            <div class="assets">
-                <div class="asset collapsible">
-                    <div class="assetIcon">🟢</div>
-                    <div class="assetName">StBOOT</div>
-                    <div class="assetQ">3 000 000 000</div>
-                </div>
-                <div class="content assetInfo">
-                    <b>Saint Bostrom</b> — Blessed Bostroms for charitable deeds<br>
-                    <b>Contract Address:</b> bostrom123456789qwertyasdfghjkl
-                    <div class="assetManagement">
-                        <button class="assetButton">Send</button>
-                    </div>
-                </div>
-                <div class="asset collapsible">
-                    <div class="assetIcon">🇬🇪</div>
-                    <div class="assetName">KLARI</div>
-                    <div class="assetQ">1 000</div>
-                </div>
-                <div class="content assetInfo">
-                    <b>LARI by Kosta</b> — Take My Money and Shut Up<br>
-                    <b>Contract Address:</b> bostrom123456789qwertyasdfghjkl
-                    <span class="material-icons" style="font-size: 14px;">content_copy</span>
-                    <div class="assetManagement">
-                        <button class="assetButton" href="#">Send</button>
-                        <button class="assetButton" href="#">Mint</button>
-                        <button class="assetButton" href="#">Burn</button> 
-                    </div>
-                </div>
+        <div class="token-wrapper">
+          <h1>Create New Token</h1>
+          <div class="form">
+            <div class="formData">
+              <label>Token's Name:</label>
+              <input placeholder="John's USD Obligations" type="text" />
+              <cite
+                >You can specify any name you like. But it is better to come up
+                with something original</cite
+              >
             </div>
-            <div class="addToken">
-                <button class="assetButton">Add Token</button>
+            <div class="formData">
+              <label>Symbol:</label>
+              <input placeholder="JUSD" type="text" />
+              <cite>How your token will be displayed in users' wallets</cite>
             </div>
+            <div class="formData">
+              <label>Quantity:</label>
+              <input placeholder="0" type="number" />
+            </div>
+            <div class="formData">
+              <label>Decimals:</label>
+              <input placeholder="0" type="number" />
+              <cite
+                >Number of digits after the comma for the minimum value of the
+                token count (e.g., Bitcoin has 8 digits)</cite
+              >
+            </div>
+            <div class="formData">
+              <label>Logo URL:</label>
+              <input placeholder="https://yoursite.com/logo.jpg" type="text" />
+            </div>
+            <button type="button" class="collapsible tokenOptions">
+              + Change Initial Balances
+            </button>
+            <div class="content">
+              <cite>
+                By default all new tokens will be transfered to your wallet. You
+                can change that.
+              </cite>
+              <div class="formRow">
+                <div class="formData dataInRow">
+                  <label>Wallet Address:</label>
+                  <input
+                    placeholder="bostrom12345678901234567890"
+                    type="text"
+                  />
+                </div>
+                <div class="formData dataInRow">
+                  <label>Balance:</label>
+                  <input placeholder="0" type="number" />
+                </div>
+                <div class="plusButton">
+                  <button class="addFields">+</button>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="collapsible tokenOptions">
+              + Marketing Details
+            </button>
+            <div class="content">
+              <cite>
+                This information will be displayed in the description of the
+                created token:
+              </cite>
+              <div class="formRow">
+                <div class="formData dataInRow">
+                  <label>Project's Name:</label>
+                  <input placeholder="John Owes You" type="text" />
+                </div>
+                <div class="formData dataInRow">
+                  <label>Public Wallet:</label>
+                  <input
+                    placeholder="bostrom12345678901234567890"
+                    type="text"
+                  />
+                </div>
+                <div class="formData dataInRow">
+                  <label>Project's Description:</label>
+                  <input
+                    placeholder="If you know John, you know what to do with this token"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="printerField">
+            <button class="print" type="submit">MINT</button>
+          </div>
         </div>
-    </article>
+      </div>
+
+      <div id="swaper" class="swaper">
+        <div class="managetokens">Manage Tokens</div>
+        <div id="token" class="stboot">🟢 StBOOT</div>
+        <div id="cash" class="cash">3 000 000 000</div>
+        <div class="contract-info">
+          <div class="saint-bostrom">
+            Saint Bostrom
+            <div class="saint-bostrom">
+              Blessed Bostroms for charitable deeds
+            </div>
+          </div>
+          <div class="saint-bostrom">
+            <div id="contractaddress">Contract Address</div>
+            <div id="address">bostrom123456789qwertyasdfghjkl</div>
+          </div>
+        </div>
+        <div class="send-wrapper">
+          <button class="send-button">SEND</button>
+          <div class="advancedoptions">Advanced options</div>
+        </div>
+        <div id="trxh" class="trxh">
+          <div class="line"></div>
+          <div class="group">
+            <div id="token" class="klari">🟢 KLARI</div>
+            <div id="cash" class="cash">1000</div>
+          </div>
+          <div class="line"></div>
+          <div class="group">
+            <div id="token" class="klari">🟢 KLARI</div>
+            <div id="cash" class="cash">1000</div>
+          </div>
+          <div class="line"></div>
+          <div class="group">
+            <div id="token" class="klari">🟢 KLARI</div>
+            <div id="cash" class="cash">1000</div>
+          </div>
+          <div class="line"></div>
+        </div>
+        <button class="add-token-button">ADD TOKEN</button>
+      </div>
+    </container>
+
     <footer>
-        <div class="build">
-            🟢 Powered by <a href="/https://cyb.ai">Bostrom</a>
-        </div>
-        <div class="footerMenu">
-            <a href="https://en.wikipedia.org/wiki/Johannes_Gutenberg">About</a> |
-            <a href="https://cyb.ai/gift">Boots Fauсet</a> |
-            <a href="#">License</a> |
-            <a href="#">Privacy & Coockies Policy</a> |
-            <a href="#">Legal Disclaimer</a>
-        </div>
+      <div class="build">
+        🟢 Powered by <a href="/https://cyb.ai">Bostrom</a>
+      </div>
+      <div class="footerMenu">
+        <a href="https://en.wikipedia.org/wiki/Johannes_Gutenberg">About</a> |
+        <a href="https://cyb.ai/gift">Boots Fauсet</a> |
+        <a href="#">License</a> | <a href="#">Privacy & Coockies Policy</a> |
+        <a href="#">Legal Disclaimer</a>
+      </div>
     </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script  src="./assets/js/collapse.js"></script>
-</body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="./assets/js/collapse.js"></script>
+  </body>
 </html>
