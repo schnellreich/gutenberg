@@ -7,7 +7,8 @@ import { TextInput } from 'components/forms/FormInput'
 import { useInputState } from 'components/forms/FormInput.hooks'
 import { JsonPreview } from 'components/JsonPreview'
 import { LinkTabs } from 'components/LinkTabs'
-import { cw721BaseLinkTabs } from 'components/LinkTabs.data'
+import { gutenbergLinkTabs } from 'components/LinkTabs.data'
+import { WalletLoader } from 'components/WalletLoader'
 import { useContracts } from 'contexts/contracts'
 import { useWallet } from 'contexts/wallet'
 import type { InstantiateResponse } from 'contracts/cw721/base'
@@ -58,7 +59,7 @@ const CW721BaseInstantiatePage: NextPage = () => {
         minter: minterState.value,
       }
       return toast.promise(
-        contract.instantiate(CW721_BASE_CODE_ID, msg, 'JunoTools CW721 Base Contract', wallet.address),
+        contract.instantiate(CW721_BASE_CODE_ID, msg, 'GutenbergTools CW721 Base Contract', wallet.address),
         {
           loading: 'Instantiating contract...',
           error: 'Instantiation failed!',
@@ -78,12 +79,13 @@ const CW721BaseInstantiatePage: NextPage = () => {
   return (
     <form className="py-6 px-12 space-y-4" onSubmit={mutate}>
       <NextSeo title="Instantiate CW721 Base Contract" />
+      <WalletLoader />
       <ContractPageHeader
-        description="CW721 Base is a specification for non fungible tokens based on CosmWasm."
+        description="This ultra-modern technology allows to create, mint and manage any possible number of fungible tokens. In case of any difficulties,"
         link={links['Docs CW721 Base']}
-        title="CW721 Base Contract"
+        title="gutenberg"
       />
-      <LinkTabs activeIndex={0} data={cw721BaseLinkTabs} />
+      <LinkTabs activeIndex={1} data={gutenbergLinkTabs} />
 
       <Conditional test={Boolean(data)}>
         <Alert type="info">

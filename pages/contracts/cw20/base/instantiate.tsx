@@ -5,11 +5,12 @@ import { ContractPageHeader } from 'components/ContractPageHeader'
 import { FormGroup } from 'components/FormGroup'
 import { AddressBalances } from 'components/forms/AddressBalances'
 import { useAddressBalancesState } from 'components/forms/AddressBalances.hooks'
-import { AddressInput, NumberInput, TextInput, UrlInput } from 'components/forms/FormInput'
+import { NumberInput, TextInput, UrlInput } from 'components/forms/FormInput'
 import { useInputState, useNumberInputState } from 'components/forms/FormInput.hooks'
 import { JsonPreview } from 'components/JsonPreview'
 import { LinkTabs } from 'components/LinkTabs'
-import { cw20LinkTabs } from 'components/LinkTabs.data'
+import { gutenbergLinkTabs } from 'components/LinkTabs.data'
+import { WalletLoader } from 'components/WalletLoader'
 import { useContracts } from 'contexts/contracts'
 import { useWallet } from 'contexts/wallet'
 import type { InstantiateResponse } from 'contracts/cw1/subkeys'
@@ -17,7 +18,6 @@ import type { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import type { FormEvent } from 'react'
 import { toast } from 'react-hot-toast'
-import { FaAsterisk } from 'react-icons/fa'
 import { useMutation } from 'react-query'
 import { CW20_BASE_CODE_ID } from 'utils/constants'
 import { withMetadata } from 'utils/layout'
@@ -31,14 +31,14 @@ const CW20InstantiatePage: NextPage = () => {
     id: 'name',
     name: 'name',
     title: 'Name',
-    placeholder: 'My Awesome CW20 Contract',
+    placeholder: 'Johns USD Obligations',
   })
 
   const symbolState = useInputState({
     id: 'symbol',
     name: 'symbol',
     title: 'Symbol',
-    placeholder: 'AWSM',
+    placeholder: 'JUSD',
   })
 
   const decimalsState = useNumberInputState({
@@ -138,14 +138,17 @@ const CW20InstantiatePage: NextPage = () => {
   const txHash = data?.transactionHash
 
   return (
-    <form className="py-6 px-12 space-y-4" onSubmit={mutate}>
+    <form className="flex flex-col py-6 px-12 space-y-4" onSubmit={mutate}>
       <NextSeo title="Instantiate CW20 Token" />
+      {/* wallet button */}
+
+      <WalletLoader />
       <ContractPageHeader
-        description="CW20 Base is a specification for fungible tokens based on CosmWasm."
+        description="This ultra-modern technology allows to create, mint and manage any possible number of fungible tokens. In case of any difficulties,"
         link={links['Docs CW20 Base']}
-        title="CW20 Base Contract"
+        title="gutenberg"
       />
-      <LinkTabs activeIndex={0} data={cw20LinkTabs} />
+      <LinkTabs activeIndex={0} data={gutenbergLinkTabs} />
 
       <Conditional test={Boolean(data)}>
         <Alert type="info">
@@ -156,43 +159,34 @@ const CW20InstantiatePage: NextPage = () => {
         <br />
       </Conditional>
 
-      <FormGroup subtitle="Basic information about your new contract" title="Contract Details">
+      <FormGroup subtitle="Basic information about your new contract" title="Create New Token">
         <TextInput isRequired {...nameState} />
         <TextInput isRequired {...symbolState} />
         <NumberInput isRequired {...decimalsState} />
+        <NumberInput {...capState} />
+        <UrlInput {...logoUrlState} />
         <AddressBalances
           entries={balancesState.entries}
           isRequired
           onAdd={balancesState.add}
           onChange={balancesState.update}
           onRemove={balancesState.remove}
-          subtitle="Enter at least one wallet address and initial balance"
-          title="Initial Balances"
+          subtitle="By default all new tokens will be transfered to your wallet. You can change that."
+          title="Change Initial Balances"
         />
       </FormGroup>
-
-      <hr className="border-white/25" />
-
-      <FormGroup subtitle="Your new contract minting rules" title="Minting Details">
-        <AddressInput {...minterState} />
-        <NumberInput {...capState} />
-      </FormGroup>
-
-      <hr className="border-white/25" />
-
       <FormGroup subtitle="Public metadata for your new contract" title="Marketing Details">
         <TextInput {...projectState} />
         <TextInput {...descriptionState} />
-        <AddressInput {...walletAddressState} />
-        <UrlInput {...logoUrlState} />
       </FormGroup>
 
-      <div className="flex items-center p-4">
-        <div className="flex-grow" />
-        <Button isDisabled={!shouldSubmit} isLoading={isLoading} isWide rightIcon={<FaAsterisk />} type="submit">
-          Instantiate Contract
-        </Button>
-      </div>
+      <FormGroup subtitle="" title="">
+        <div className="flex justify-center p-4">
+          <Button isDisabled={!shouldSubmit} isLoading={isLoading} isWide type="submit">
+            MINT
+          </Button>
+        </div>
+      </FormGroup>
     </form>
   )
 }

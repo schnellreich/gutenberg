@@ -16,18 +16,18 @@ export const WalletLoader = () => {
   const displayName = useWalletStore((store) => store.name || getShortAddress(store.address))
 
   return (
-    <Popover className="my-8">
+    <Popover>
       {({ close }) => (
-        <>
-          <div className="grid -mx-4">
+        <div className="flex justify-end">
+          <div className="flex justify-end w-full">
             {!isReady && (
-              <WalletButton className="w-full" isLoading={isLoading} onClick={() => void connect()}>
+              <WalletButton className="w-1/5" isLoading={isLoading} onClick={() => void connect()}>
                 Connect Wallet
               </WalletButton>
             )}
 
             {isReady && (
-              <Popover.Button as={WalletButton} className="w-full" isLoading={isLoading}>
+              <Popover.Button as={WalletButton} className="w-1/5" isLoading={isLoading}>
                 {displayName}
               </Popover.Button>
             )}
@@ -44,9 +44,11 @@ export const WalletLoader = () => {
           >
             <Popover.Panel
               className={clsx(
-                'absolute inset-x-4 mt-2',
+                'absolute mt-2',
                 'bg-stone-800/80 rounded shadow-lg shadow-black/90 backdrop-blur-sm',
-                'flex flex-col items-stretch text-sm divide-y divide-white/10',
+                'flex flex-col justify-items-end text-sm divide-y divide-white/10',
+                'w-1/5',
+                '',
               )}
             >
               <div className="flex flex-col items-center py-2 px-4 space-y-1 text-center">
@@ -71,7 +73,7 @@ export const WalletLoader = () => {
               </WalletPanelButton>
             </Popover.Panel>
           </Transition>
-        </>
+        </div>
       )}
     </Popover>
   )

@@ -22,6 +22,7 @@ html {
   @apply font-sans antialiased text-white bg-black;
 }
 
+
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;

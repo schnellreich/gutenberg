@@ -11,9 +11,9 @@ interface ContractPageHeaderProps {
 export const ContractPageHeader = ({ title, description, link }: ContractPageHeaderProps) => {
   return (
     <PageHeader title={title}>
-      {description} Learn more in the{' '}
+      {description} read the{' '}
       <Anchor className="font-bold text-plumbus hover:underline" href={link}>
-        documentation
+        instruction
       </Anchor>
       .
     </PageHeader>

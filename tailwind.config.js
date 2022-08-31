@@ -16,14 +16,14 @@ module.exports = {
 
         neutral: colors.neutral,
         plumbus: {
-          DEFAULT: '#F0827D',
+          DEFAULT: '#e2fb5f',
           light: '#FF9D9E',
           matte: '#CA9991',
           dark: '#6E5451',
           10: '#FFF0ED',
           20: '#FACBC8',
           30: '#F5A7A2',
-          40: '#F0827D',
+          40: '#e2fb5f',
           50: '#D9726F',
           60: '#C26261',
           70: '#AB5152',
@@ -36,9 +36,9 @@ module.exports = {
         twitter: { DEFAULT: '#1DA1F2' },
       },
       fontFamily: {
-        heading: ["'Basement Grotesque'", ...defaultTheme.fontFamily.sans],
+        heading: ['Roboto', ...defaultTheme.fontFamily.sans],
         sans: ['Roboto', ...defaultTheme.fontFamily.sans],
-        mono: ['"JetBrains Mono"', ...defaultTheme.fontFamily.mono],
+        mono: ['Roboto', ...defaultTheme.fontFamily.sans],
       },
     },
   },

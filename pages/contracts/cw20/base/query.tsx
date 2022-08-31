@@ -7,6 +7,7 @@ import { useInputState } from 'components/forms/FormInput.hooks'
 import { JsonPreview } from 'components/JsonPreview'
 import { LinkTabs } from 'components/LinkTabs'
 import { cw20LinkTabs } from 'components/LinkTabs.data'
+import { WalletLoader } from 'components/WalletLoader'
 import { useContracts } from 'contexts/contracts'
 import { useWallet } from 'contexts/wallet'
 import type { NextPage } from 'next'
@@ -93,11 +94,12 @@ const CW20QueryPage: NextPage = () => {
 
   return (
     <section className="py-6 px-12 space-y-4">
+      <WalletLoader />
       <NextSeo title="Query CW20 Token" />
       <ContractPageHeader
-        description="CW20 Base is a specification for fungible tokens based on CosmWasm."
+        description="This ultra-modern technology allows to create, mint and manage any possible number of fungible tokens. In case of any difficulties, read the instruction."
         link={links['Docs CW20 Base']}
-        title="CW20 Base Contract"
+        title="gutenberg"
       />
       <LinkTabs activeIndex={1} data={cw20LinkTabs} />
 

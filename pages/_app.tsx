@@ -6,7 +6,6 @@ import '../styles/datepicker.css'
 import type { WalletControllerChainOptions } from '@terra-money/wallet-provider'
 import { StaticWalletProvider, WalletProvider } from '@terra-money/wallet-provider'
 import { Layout } from 'components/Layout'
-import { Modal } from 'components/Modal'
 import { queryClient } from 'config/react-query'
 import { ContractsProvider } from 'contexts/contracts'
 import { WalletProvider as KeplrWalletProvider } from 'contexts/wallet'
@@ -30,7 +29,6 @@ export default function App({
             <Toaster position="top-right" />
             <Layout metadata={getComponentMetadata(Component)}>
               <Component {...pageProps} />
-              <Modal />
             </Layout>
           </ContractsProvider>
         </KeplrWalletProvider>
@@ -44,7 +42,6 @@ export default function App({
             <Toaster position="top-right" />
             <Layout metadata={getComponentMetadata(Component)}>
               <Component {...pageProps} />
-              <Modal />
             </Layout>
           </ContractsProvider>
         </KeplrWalletProvider>

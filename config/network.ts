@@ -5,7 +5,6 @@ export const mainnetConfig: AppConfig = {
   chainName: 'Juno',
   addressPrefix: 'juno',
   rpcUrl: 'https://rpc.juno-1.deuslabs.fi',
-  // httpUrl: "https://rpc.juno-1.deuslabs.fi",
   feeToken: 'ujuno',
   stakingToken: 'ujuno',
   coinMap: {
@@ -20,22 +19,21 @@ export const mainnetConfig: AppConfig = {
 }
 
 export const uniTestnetConfig: AppConfig = {
-  chainId: 'uni-3',
-  chainName: 'Uni',
-  addressPrefix: 'juno',
-  rpcUrl: 'https://rpc.uni.juno.deuslabs.fi',
-  httpUrl: 'https://lcd.uni.juno.deuslabs.fi',
-  faucetUrl: 'https://faucet.uni.juno.deuslabs.fi',
-  feeToken: 'ujunox',
-  stakingToken: 'ujunox',
+  chainId: 'space-pussy-1',
+  chainName: 'Space Pussy',
+  addressPrefix: 'bostrom',
+  rpcUrl: 'https://rpc.space-pussy-1.cybernode.ai',
+  httpUrl: 'https://lcd.space-pussy-1.cybernode.ai',
+  feeToken: 'boot',
+  stakingToken: 'boot',
   coinMap: {
-    ujunox: { denom: 'JUNOX', fractionalDigits: 6 },
+    boot: { denom: 'BOOT', fractionalDigits: 0 },
   },
-  gasPrice: 0.025,
+  gasPrice: 0.001,
   fees: {
-    upload: 1500000,
-    init: 500000,
-    exec: 200000,
+    upload: 2500000,
+    init: 1000000,
+    exec: 500000,
   },
 }
 

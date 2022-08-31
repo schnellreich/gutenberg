@@ -19,11 +19,12 @@ export const Button = (props: ButtonProps) => {
   return (
     <button
       className={clsx(
-        'group flex items-center py-2 space-x-2 font-bold focus:ring',
+        'group flex justify-center items-center py-4 space-x-2 font-bold focus:ring ',
+        'w-1/3',
         isWide ? 'px-8' : 'px-4',
         {
-          'bg-plumbus-60 hover:bg-plumbus-50 rounded ': variant === 'solid',
-          'bg-plumbus/10 hover:bg-plumbus/20 rounded border border-plumbus': variant === 'outline',
+          'text-lime-300 bg-slate-700 hover:bg-lime-300 rounded-3xl ': variant === 'solid',
+          'hover:text-slate-700 rounded border border-plumbus': variant === 'outline',
           'opacity-50 cursor-not-allowed pointer-events-none': isDisabled,
           'animate-pulse cursor-wait pointer-events-none': isLoading,
         },
