@@ -14,7 +14,7 @@ export const TransactionHash = ({ hash, className }: TransactionHashProps) => {
   return (
     <div
       className={clsx(
-        'bg-white/10 rounded border-2 border-white/20 form-input',
+        'bg-white/10 rounded-3xl border-2 border-white/20 form-input',
         'focus:ring focus:ring-plumbus-20',
         hash !== '' ? 'text-white/100' : 'text-white/50',
         'flex justify-end    items-center',
@@ -24,14 +24,18 @@ export const TransactionHash = ({ hash, className }: TransactionHashProps) => {
       <StyledInput
         className={clsx(
           'flex-auto w-fit',
-          'bg-white/5 rounded border-0 border-white/20 focus:ring-0 form-input',
+          'bg-white/5 rounded-3xl border-0 border-white/20 focus:ring-0 form-input',
           hash !== '' ? 'text-white/100' : 'text-white/50',
           className,
         )}
         value={hash || 'Waiting for execution...'}
       />
       <AnchorButton
-        className={clsx('ml-2 text-white', hash === '' ? 'text-white/30 bg-opacity-20 hover:bg-opacity-10' : '')}
+        className={clsx(
+          'bg-slate-700',
+          'ml-2 text-slate-300',
+          hash === '' ? 'text-lime-300 bg-opacity-20 hover:bg-opacity-10' : '',
+        )}
         href={`${links.Explorer}/tx${NETWORK === 'mainnet' ? 's' : ''}/${hash}`}
         onClick={(e) => {
           if (hash === '') e.preventDefault()

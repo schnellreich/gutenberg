@@ -32,7 +32,7 @@ export const AddressInput = forwardRef<HTMLInputElement, FormInputProps>(
     return (
       <FormInput
         {...props}
-        placeholder={props.placeholder || 'juno1234567890abcdefghijklmnopqrstuvwxyz...'}
+        placeholder={props.placeholder || 'bostrom1vfw0233tezzhg2r09ay7zsa8u7avrr4p4kr0rg...'}
         ref={ref}
         type="text"
       />
@@ -46,7 +46,7 @@ export const ValidatorAddressInput = forwardRef<HTMLInputElement, FormInputProps
     return (
       <FormInput
         {...props}
-        placeholder={props.placeholder || 'junovaloper1234567890abcdefghijklmnopqrstuvwxyz...'}
+        placeholder={props.placeholder || 'bostrom1vfw0233tezzhg2r09ay7zsa8u7avrr4p4kr0rg...'}
         ref={ref}
         type="text"
       />

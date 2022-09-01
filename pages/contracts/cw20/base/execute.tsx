@@ -97,7 +97,7 @@ const CW20ExecutePage: NextPage = () => {
   })
 
   const showAmountField = type && !isEitherType(type, ['update-logo', 'update-marketing'])
-  // const showContractField = isEitherType(type, ['send', 'send-from'])
+  //const showContractField = isEitherType(type, ['send', 'send-from'])
   const showUpdateLogoField = type === 'update-logo'
   const showMarketingFields = type === 'update-marketing'
   const showMessageField = isEitherType(type, ['send', 'send-from'])

@@ -17,12 +17,12 @@ export const FormControl = (props: FormControlProps) => {
       <Label className="flex flex-col space-y-1" htmlFor={htmlId}>
         <span
           className={clsx('font-bold first-letter:capitalize', {
-            "after:text-red-500 after:content-['_*']": isRequired,
+            "after:text-lime-300 after:content-['_*']": isRequired,
           })}
         >
           {title}
         </span>
-        {subtitle && <span className="text-sm text-white/50">{subtitle}</span>}
+        {subtitle && <span className="text-xs text-slate-400">{subtitle}</span>}
       </Label>
       {children}
     </div>

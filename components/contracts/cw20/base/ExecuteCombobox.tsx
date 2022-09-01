@@ -24,8 +24,8 @@ export const ExecuteCombobox = ({ value, onChange }: ExecuteComboboxProps) => {
       htmlId="message-type"
       labelAs={Combobox.Label}
       onChange={onChange}
-      subtitle="Contract execute message type"
-      title="Message Type"
+      subtitle="Send, Mint,"
+      title="Actions"
       value={value}
     >
       <div className="relative">
@@ -38,7 +38,7 @@ export const ExecuteCombobox = ({ value, onChange }: ExecuteComboboxProps) => {
           displayValue={(val?: ExecuteListItem) => val?.name ?? ''}
           id="message-type"
           onChange={(event) => setSearch(event.target.value)}
-          placeholder="Select message type"
+          placeholder="Select action"
         />
 
         <Combobox.Button
@@ -54,8 +54,8 @@ export const ExecuteCombobox = ({ value, onChange }: ExecuteComboboxProps) => {
           <Combobox.Options
             className={clsx(
               'overflow-auto absolute z-10 mt-2 w-full max-h-[30vh]',
-              'bg-stone-800/80 rounded shadow-lg backdrop-blur-sm',
-              'divide-y divide-stone-500/50',
+              'bg-slate-700/80 rounded shadow-lg backdrop-blur-sm',
+              'divide-y divide-lime-300/50',
             )}
           >
             {filtered.length < 1 && (
