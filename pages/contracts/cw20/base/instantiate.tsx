@@ -24,12 +24,14 @@ import type { InstantiateResponse } from 'contracts/cw1/subkeys'
 import type { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import type { FormEvent } from 'react'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { FaArrowRight } from 'react-icons/fa'
 import { useMutation } from 'react-query'
 import { CW20_BASE_CODE_ID } from 'utils/constants'
-import { isEitherType } from 'utils/contracts/cw20/execute'
+import type { DispatchExecuteArgs } from 'utils/contracts/cw20/execute'
+import { dispatchExecute, isEitherType, previewExecutePayload } from 'utils/contracts/cw20/execute'
+import { parseJson } from 'utils/json'
 import { withMetadata } from 'utils/layout'
 import { links } from 'utils/links'
 
@@ -204,6 +206,45 @@ const CW20InstantiatePage: NextPage = () => {
     },
   )
 
+  const messages = useMemo(() => contract?.use(contractState.value), [contract, wallet.address, contractState.value])
+  const payload: DispatchExecuteArgs = {
+    amount: amountState.value.toString(),
+    contract: contractState.value,
+    description: descriptionState.value,
+    logo: { url: logoUrlState.value },
+    marketing: marketingState.value,
+    messages,
+    msg: parseJson(messageState.value),
+    owner: ownerState.value,
+    project: projectState.value,
+    recipient: recipientState.value,
+    txSigner: wallet.address,
+    type,
+  }
+
+  const { isExecuting, hmutate } = useMutation(
+    async (event: FormEvent) => {
+      event.preventDefault()
+      if (!type) {
+        throw new Error('Please select message type!')
+      }
+      const txHash = await toast.promise(dispatchExecute(payload), {
+        error: `${type.charAt(0).toUpperCase() + type.slice(1)} execute failed!`,
+        loading: 'Executing message...',
+        success: (tx) => `Transaction ${tx} success!`,
+      })
+      if (txHash) {
+        setLastTx(txHash)
+      }
+    },
+    {
+      onError: (error) => {
+        console.error(error)
+        toast.error(String(error))
+      },
+    },
+  )
+
   const txHash = data?.transactionHash
 
   return (
@@ -274,7 +315,7 @@ const CW20InstantiatePage: NextPage = () => {
             <div className="relative">
               <Button
                 className="absolute top-0 right-0"
-                isLoading={isLoading}
+                isExecuting={isLoading}
                 rightIcon={<FaArrowRight />}
                 type="submit"
               >
@@ -285,6 +326,9 @@ const CW20InstantiatePage: NextPage = () => {
               </FormControl>
             </div>
           </div>
+          <FormControl subtitle="View current message to be sent" title="Payload Preview">
+            <JsonPreview content={previewExecutePayload(payload)} isCopyable />
+          </FormControl>
         </FormGroupSwap>
       </FormGroupComposer>
     </form>

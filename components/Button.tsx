@@ -7,6 +7,7 @@ export type ButtonVariant = 'solid' | 'outline'
 export interface ButtonProps extends ComponentProps<'button'> {
   isDisabled?: boolean
   isLoading?: boolean
+  isExecuting: boolean
   isWide?: boolean
   leftIcon?: JSX.Element
   rightIcon?: JSX.Element
@@ -14,7 +15,18 @@ export interface ButtonProps extends ComponentProps<'button'> {
 }
 
 export const Button = (props: ButtonProps) => {
-  const { isDisabled, isLoading, isWide, leftIcon, rightIcon, variant = 'solid', className, children, ...rest } = props
+  const {
+    isDisabled,
+    isExecuting,
+    isLoading,
+    isWide,
+    leftIcon,
+    rightIcon,
+    variant = 'solid',
+    className,
+    children,
+    ...rest
+  } = props
 
   return (
     <button
