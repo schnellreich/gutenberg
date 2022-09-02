@@ -10,7 +10,7 @@ export const FormGroupSwap = (props: FormGroupSwapProps) => {
   const { title, children } = props
 
   return (
-    <div className=" flex flex-col p-4 space-x-0 w-1/3 h-full text-white bg-slate-700/50 rounded-3xl border-0">
+    <div className=" flex flex-col p-3 mx-2 w-1/3 h-full text-white bg-slate-700/50 rounded-3xl border-0">
       <div className="flex flex-row w-1/3">
         <label className="flex flex-col space-y-1">
           <span className="font-bold text-lime-300">{title}</span>
