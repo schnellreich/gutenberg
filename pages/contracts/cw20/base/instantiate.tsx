@@ -6,6 +6,8 @@ import { ExecuteCombobox } from 'components/contracts/cw20/base/ExecuteCombobox'
 import { useExecuteComboboxState } from 'components/contracts/cw20/base/ExecuteCombobox.hooks'
 import { FormControl } from 'components/FormControl'
 import { FormGroup } from 'components/FormGroup'
+import { FormGroupComposer } from 'components/FormGroupComposer'
+import { FormGroupSwap } from 'components/FormGroupSwap'
 import { AddressBalances } from 'components/forms/AddressBalances'
 import { useAddressBalancesState } from 'components/forms/AddressBalances.hooks'
 import { AddressInput, NumberInput, TextInput, UrlInput } from 'components/forms/FormInput'
@@ -215,69 +217,76 @@ const CW20InstantiatePage: NextPage = () => {
         link={links['Docs CW20 Base']}
         title="gutenberg"
       />
-      <LinkTabs activeIndex={0} data={gutenbergLinkTabs} />
-
-      <Conditional test={Boolean(data)}>
-        <Alert type="info">
-          <b>Success creation!</b> Here is the transaction result containing the contract address and the transaction
-          hash.
-        </Alert>
-        <JsonPreview content={data} title="Transaction Result" />
-        <br />
-      </Conditional>
-
-      <FormGroup subtitle="Basic information about your new contract" title="Create New Token">
-        <TextInput isRequired {...nameState} />
-        <TextInput isRequired {...symbolState} />
-        <NumberInput isRequired {...decimalsState} />
-        <NumberInput {...capState} />
-        <UrlInput {...logoUrlState} />
-        <AddressBalances
-          entries={balancesState.entries}
-          isRequired
-          onAdd={balancesState.add}
-          onChange={balancesState.update}
-          onRemove={balancesState.remove}
-          subtitle="By default all new tokens will be transfered to your wallet. You can change that."
-          title="Change Initial Balances"
-        />
-        <TextInput {...projectState} />
-        <TextInput {...descriptionState} />
-        <div className="flex justify-center p-4">
-          <Button isDisabled={!shouldSubmit} isLoading={isLoading} isWide type="submit">
-            MINT
-          </Button>
-        </div>
-      </FormGroup>
-
-      <FormGroup subtitle="manage-tokens" title="Manage Tokens">
-        <div className="space-y-8">
-          <AddressInput {...contractState} />
-          <ExecuteCombobox {...comboboxState} />
-          {showOwnerField && <AddressInput {...ownerState} />}
-          {showRecipientField && <AddressInput {...recipientState} />}
-          {showAmountField && <NumberInput {...amountState} />}
-          {showMessageField && <JsonTextArea {...messageState} />}
-          {showMarketingFields && (
-            <>
-              <TextInput {...projectState} />
-              <TextInput {...descriptionState} />
-              <AddressInput {...marketingState} />
-            </>
-          )}
-          {showUpdateLogoField && <UrlInput {...logoUrlState} />}
-        </div>
-        <div className="space-y-8">
-          <div className="relative">
-            <Button className="absolute top-0 right-0" isLoading={isLoading} rightIcon={<FaArrowRight />} type="submit">
-              Execute
+      <FormGroupComposer subtitle="composer" title="">
+        <LinkTabs activeIndex={0} data={gutenbergLinkTabs} />
+        <Conditional test={Boolean(data)}>
+          <Alert type="info">
+            <b>Success creation!</b> Here is the transaction result containing the contract address and the transaction
+            hash.
+          </Alert>
+          <JsonPreview content={data} title="Transaction Result" />
+          <br />
+        </Conditional>
+      </FormGroupComposer>
+      <FormGroupComposer subtitle="composer" title="">
+        <FormGroup subtitle="Basic information about your new contract" title="Create New Token">
+          <TextInput isRequired {...nameState} />
+          <TextInput isRequired {...symbolState} />
+          <NumberInput isRequired {...decimalsState} />
+          <NumberInput {...capState} />
+          <UrlInput {...logoUrlState} />
+          <AddressBalances
+            entries={balancesState.entries}
+            isRequired
+            onAdd={balancesState.add}
+            onChange={balancesState.update}
+            onRemove={balancesState.remove}
+            subtitle="By default all new tokens will be transfered to your wallet. You can change that."
+            title="Change Initial Balances"
+          />
+          <TextInput {...projectState} />
+          <TextInput {...descriptionState} />
+          <div className="flex justify-center p-4">
+            <Button isDisabled={!shouldSubmit} isLoading={isLoading} isWide type="submit">
+              MINT
             </Button>
-            <FormControl subtitle="View execution transaction hash" title="Transaction Hash">
-              <TransactionHash hash={lastTx} />
-            </FormControl>
           </div>
-        </div>
-      </FormGroup>
+        </FormGroup>
+
+        <FormGroupSwap subtitle="manage-tokens" title="Manage Tokens">
+          <div className="space-y-8">
+            <AddressInput {...contractState} />
+            <ExecuteCombobox {...comboboxState} />
+            {showOwnerField && <AddressInput {...ownerState} />}
+            {showRecipientField && <AddressInput {...recipientState} />}
+            {showAmountField && <NumberInput {...amountState} />}
+            {showMessageField && <JsonTextArea {...messageState} />}
+            {showMarketingFields && (
+              <>
+                <TextInput {...projectState} />
+                <TextInput {...descriptionState} />
+                <AddressInput {...marketingState} />
+              </>
+            )}
+            {showUpdateLogoField && <UrlInput {...logoUrlState} />}
+          </div>
+          <div className="space-y-8">
+            <div className="relative">
+              <Button
+                className="absolute top-0 right-0"
+                isLoading={isLoading}
+                rightIcon={<FaArrowRight />}
+                type="submit"
+              >
+                Execute
+              </Button>
+              <FormControl subtitle="View execution transaction hash" title="Transaction Hash">
+                <TransactionHash hash={lastTx} />
+              </FormControl>
+            </div>
+          </div>
+        </FormGroupSwap>
+      </FormGroupComposer>
     </form>
   )
 }
