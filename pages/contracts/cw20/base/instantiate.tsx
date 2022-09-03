@@ -1,5 +1,6 @@
 import { Alert } from 'components/Alert'
 import { Button } from 'components/Button'
+import { Collapsible } from 'components/Collapsible'
 import { Conditional } from 'components/Conditional'
 import { ContractPageHeader } from 'components/ContractPageHeader'
 import { ExecuteCombobox } from 'components/contracts/cw20/base/ExecuteCombobox'
@@ -249,7 +250,7 @@ const CW20InstantiatePage: NextPage = () => {
 
   return (
     <form className="flex flex-col py-6 px-12 space-y-4" onSubmit={mutate}>
-      <NextSeo title="Create CW20 Token" />
+      <NextSeo title="Gutenberg | Web3 Typography" />
       {/* wallet button */}
 
       <WalletLoader />
@@ -276,17 +277,21 @@ const CW20InstantiatePage: NextPage = () => {
           <NumberInput isRequired {...decimalsState} />
           <NumberInput {...capState} />
           <UrlInput {...logoUrlState} />
-          <AddressBalances
-            entries={balancesState.entries}
-            isRequired
-            onAdd={balancesState.add}
-            onChange={balancesState.update}
-            onRemove={balancesState.remove}
-            subtitle="By default all new tokens will be transfered to your wallet. You can change that."
-            title="Change Initial Balances"
-          />
-          <TextInput {...projectState} />
-          <TextInput {...descriptionState} />
+          <Collapsible subtitle="composer" title="">
+            <AddressBalances
+              entries={balancesState.entries}
+              isRequired
+              onAdd={balancesState.add}
+              onChange={balancesState.update}
+              onRemove={balancesState.remove}
+              subtitle="By default all new tokens will be transfered to your wallet. You can change that."
+              title="Change Initial Balances"
+            />
+          </Collapsible>
+          <Collapsible subtitle="composer" title="">
+            <TextInput {...projectState} />
+            <TextInput {...descriptionState} />
+          </Collapsible>
           <div className="flex justify-center p-4">
             <Button isDisabled={!shouldSubmit} isLoading={isLoading} isWide type="submit">
               MINT
