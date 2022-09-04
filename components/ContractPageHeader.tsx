@@ -12,7 +12,7 @@ export const ContractPageHeader = ({ title, description, link }: ContractPageHea
   return (
     <PageHeader title={title}>
       {description} read the{' '}
-      <Anchor className="font-bold text-plumbus hover:underline" href={link}>
+      <Anchor className="font-bold text-lime-300 hover:underline" href={link}>
         instruction
       </Anchor>
       .

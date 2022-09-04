@@ -249,16 +249,17 @@ const CW20InstantiatePage: NextPage = () => {
   const txHash = data?.transactionHash
 
   return (
-    <form className="flex flex-col py-6 px-12 space-y-4" onSubmit={mutate}>
-      <NextSeo title="Gutenberg | Web3 Typography" />
+    <form className="flex flex-col py-6 px-12 space-y-0" onSubmit={mutate}>
+      <NextSeo title="Web3 Typography " />
       {/* wallet button */}
-
-      <WalletLoader />
-      <ContractPageHeader
-        description="This ultra-modern technology allows to create, mint and manage any possible number of fungible tokens. In case of any difficulties,"
-        link={links['Docs CW20 Base']}
-        title="gutenberg"
-      />
+      <div className="flex flex-col justify-center">
+        <WalletLoader />
+        <ContractPageHeader
+          description="This ultra-modern technology allows to create, mint and manage any possible number of fungible tokens. In case of any difficulties,"
+          link={links['Docs CW20 Base']}
+          title="gutenberg"
+        />
+      </div>
       <FormGroupComposer subtitle="composer" title="">
         <LinkTabs activeIndex={0} data={gutenbergLinkTabs} />
         <Conditional test={Boolean(data)}>
@@ -277,7 +278,7 @@ const CW20InstantiatePage: NextPage = () => {
           <NumberInput isRequired {...decimalsState} />
           <NumberInput {...capState} />
           <UrlInput {...logoUrlState} />
-          <Collapsible subtitle="composer" title="">
+          <Collapsible subtitle="collapsible" title="Change Balance">
             <AddressBalances
               entries={balancesState.entries}
               isRequired
@@ -288,7 +289,7 @@ const CW20InstantiatePage: NextPage = () => {
               title="Change Initial Balances"
             />
           </Collapsible>
-          <Collapsible subtitle="composer" title="">
+          <Collapsible subtitle="collapsible" title="Marketing Details">
             <TextInput {...projectState} />
             <TextInput {...descriptionState} />
           </Collapsible>

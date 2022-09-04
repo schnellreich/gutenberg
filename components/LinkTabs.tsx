@@ -14,7 +14,7 @@ export const LinkTabs = ({ data, activeIndex }: LinkTabsProps) => {
       className={clsx(
         'flex before:absolute grid-flow-col rounded',
         'w-1/2',
-        'before:inset-x-0 before:bottom-0 before:border-b-2 before:border-white/25',
+        'before:inset-x-0 before:bottom-0 before:border-b-2',
       )}
     >
       {data.map((item, index) => (
