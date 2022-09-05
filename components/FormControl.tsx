@@ -22,7 +22,7 @@ export const FormControl = (props: FormControlProps) => {
         >
           {title}
         </span>
-        {subtitle && <span className="text-xs text-slate-400">{subtitle}</span>}
+        {subtitle && <span className="text-xs text-slate-300">{subtitle}</span>}
       </Label>
       {children}
     </div>

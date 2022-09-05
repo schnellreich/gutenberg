@@ -23,8 +23,8 @@ export const Button = (props: ButtonProps) => {
         'w-1/3',
         isWide ? 'px-8' : 'px-4',
         {
-          'text-lime-300 bg-slate-700 hover:bg-lime-300 rounded-3xl ': variant === 'solid',
-          'hover:text-slate-700 rounded border border-plumbus': variant === 'outline',
+          'text-lime-300 bg-slate-700 hover:bg-lime-300 rounded-3xl': variant === 'solid',
+          'hover:text-slate-700': variant === 'solid',
           'opacity-50 cursor-not-allowed pointer-events-none': isDisabled,
           'animate-pulse cursor-wait pointer-events-none': isLoading,
         },

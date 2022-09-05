@@ -1,6 +1,5 @@
 import { Alert } from 'components/Alert'
 import { Button } from 'components/Button'
-import { Collapsible } from 'components/Collapsible'
 import { Conditional } from 'components/Conditional'
 import { ContractPageHeader } from 'components/ContractPageHeader'
 import { ExecuteCombobox } from 'components/contracts/cw20/base/ExecuteCombobox'
@@ -269,7 +268,6 @@ const CW20InstantiatePage: NextPage = () => {
             hash.
           </Alert>
           <JsonPreview content={data} title="Transaction Result" />
-          <br />
         </Conditional>
       </FormGroupComposer>
       <FormGroupComposer subtitle="composer" title="">
@@ -279,11 +277,11 @@ const CW20InstantiatePage: NextPage = () => {
           <NumberInput isRequired {...decimalsState} />
           <NumberInput {...capState} />
           <UrlInput {...logoUrlState} />
-          <Accordion alwaysOpen={false}>
+          <Accordion alwaysOpen>
             <Accordion.Panel>
               <Accordion.Title>Change Initial Balances</Accordion.Title>
               <Accordion.Content>
-                <div className="block p-2">
+                <div className="block p-0">
                   <AddressBalances
                     entries={balancesState.entries}
                     isRequired
@@ -297,10 +295,17 @@ const CW20InstantiatePage: NextPage = () => {
               </Accordion.Content>
             </Accordion.Panel>
           </Accordion>
-          <Collapsible subtitle="collapsible" title="Marketing Details">
-            <TextInput {...projectState} />
-            <TextInput {...descriptionState} />
-          </Collapsible>
+          <Accordion alwaysOpen>
+            <Accordion.Panel>
+              <Accordion.Title>Marketing Details</Accordion.Title>
+              <Accordion.Content>
+                <div className="block p-0">
+                  <TextInput {...projectState} />
+                  <TextInput {...descriptionState} />
+                </div>
+              </Accordion.Content>
+            </Accordion.Panel>
+          </Accordion>
           <div className="flex justify-center p-4">
             <Button isDisabled={!shouldSubmit} isLoading={isLoading} isWide type="submit">
               MINT
@@ -326,10 +331,10 @@ const CW20InstantiatePage: NextPage = () => {
             {showUpdateLogoField && <UrlInput {...logoUrlState} />}
           </div>
           <div className="space-y-8">
-            <div className="relative">
+            <div className="flex flex-col justify-center items-center">
               <Button
-                className="absolute top-0 right-0"
-                isExecuting={isLoading}
+                className="relative justify-center m-2"
+                isLoading={isLoading}
                 rightIcon={<FaArrowRight />}
                 type="submit"
               >

@@ -7,9 +7,10 @@ export const StyledInput = forwardRef<HTMLInputElement, ComponentProps<'input'>>
     return (
       <input
         className={clsx(
-          'bg-white/100 rounded-lg border-0 border-white/20 form-input',
+          'bg-white rounded-lg border-0 form-input',
+          'text-slate-700',
           'placeholder:text-slate-300',
-          'focus:ring focus:ring-lime-500',
+          'focus:ring focus:ring-lime-300',
           className,
         )}
         ref={ref}

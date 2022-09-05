@@ -14,7 +14,7 @@ export const TransactionHash = ({ hash, className }: TransactionHashProps) => {
   return (
     <div
       className={clsx(
-        'bg-white/10 rounded-3xl border-2 border-white/20 form-input',
+        'bg-white/10 rounded-3xl border-0 border-lime-300 form-input',
         'focus:ring focus:ring-plumbus-20',
         hash !== '' ? 'text-white/100' : 'text-white/50',
         'flex justify-end    items-center',

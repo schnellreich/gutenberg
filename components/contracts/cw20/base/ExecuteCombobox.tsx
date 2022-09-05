@@ -24,7 +24,7 @@ export const ExecuteCombobox = ({ value, onChange }: ExecuteComboboxProps) => {
       htmlId="message-type"
       labelAs={Combobox.Label}
       onChange={onChange}
-      subtitle="Send, Mint,"
+      subtitle="Send, Mint, Burn"
       title="Actions"
       value={value}
     >
