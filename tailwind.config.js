@@ -3,7 +3,11 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  content: ['./{components,contexts,hooks,pages,utils}/**/*.{js,cjs,mjs,ts,tsx}'],
+  content: [
+    './{components,contexts,hooks,pages,utils}/**/*.{js,cjs,mjs,ts,tsx}',
+    './public/**/*.html',
+    './node_modules/flowbite-react/**/*.js',
+  ],
 
   theme: {
     extend: {
@@ -49,6 +53,7 @@ module.exports = {
       strategy: 'class',
     }),
     require('@tailwindcss/line-clamp'),
+    require('flowbite/plugin'),
 
     // custom gradient background
     plugin(({ addUtilities }) => {

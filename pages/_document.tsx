@@ -7,6 +7,7 @@ export default class CustomDocument extends NextDocument {
     return (
       <Html lang="en">
         <Head>
+          <link href="https://unpkg.com/flowbite@latest/dist/flowbite.min.css" rel="stylesheet" />
           <meta charSet="UTF-8" />
           <meta content="ie=edge" httpEquiv="X-UA-Compatible" />
           <FaviconsMetaTags />

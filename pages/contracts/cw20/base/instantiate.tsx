@@ -22,6 +22,7 @@ import { WalletLoader } from 'components/WalletLoader'
 import { useContracts } from 'contexts/contracts'
 import { useWallet } from 'contexts/wallet'
 import type { InstantiateResponse } from 'contracts/cw1/subkeys'
+import { Accordion } from 'flowbite-react'
 import type { NextPage } from 'next'
 import { NextSeo } from 'next-seo'
 import type { FormEvent } from 'react'
@@ -278,17 +279,24 @@ const CW20InstantiatePage: NextPage = () => {
           <NumberInput isRequired {...decimalsState} />
           <NumberInput {...capState} />
           <UrlInput {...logoUrlState} />
-          <Collapsible subtitle="collapsible" title="Change Balance">
-            <AddressBalances
-              entries={balancesState.entries}
-              isRequired
-              onAdd={balancesState.add}
-              onChange={balancesState.update}
-              onRemove={balancesState.remove}
-              subtitle="By default all new tokens will be transfered to your wallet. You can change that."
-              title="Change Initial Balances"
-            />
-          </Collapsible>
+          <Accordion alwaysOpen={false}>
+            <Accordion.Panel>
+              <Accordion.Title>Change Initial Balances</Accordion.Title>
+              <Accordion.Content>
+                <div className="block p-2">
+                  <AddressBalances
+                    entries={balancesState.entries}
+                    isRequired
+                    onAdd={balancesState.add}
+                    onChange={balancesState.update}
+                    onRemove={balancesState.remove}
+                    subtitle="By default all new tokens will be transfered to your wallet. You can change that."
+                    title="Change Initial Balances"
+                  />
+                </div>
+              </Accordion.Content>
+            </Accordion.Panel>
+          </Accordion>
           <Collapsible subtitle="collapsible" title="Marketing Details">
             <TextInput {...projectState} />
             <TextInput {...descriptionState} />

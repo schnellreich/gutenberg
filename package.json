@@ -34,6 +34,8 @@
     "axios": "^0",
     "clsx": "^1",
     "compare-versions": "^4",
+    "flowbite": "^1.5.3",
+    "flowbite-react": "^0.1.10",
     "match-sorter": "^6",
     "next": "^12",
     "next-seo": "^4",
