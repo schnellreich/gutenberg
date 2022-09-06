@@ -28,7 +28,7 @@ const eslintConfig = {
     'import/extensions': ['off'],
     'import/newline-after-import': ['warn'],
     'import/order': ['off'],
-    'no-console': ['warn'],
+    'no-console': ['off'],
     'no-unused-vars': ['off'],
     'react/function-component-definition': ['off'],
     'react/jsx-sort-props': ['warn', { reservedFirst: ['key'] }],

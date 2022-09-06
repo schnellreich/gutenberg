@@ -28,7 +28,6 @@ import type { FormEvent } from 'react'
 import { useMemo, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { FaArrowRight } from 'react-icons/fa'
-import { useMutation } from 'react-query'
 import { CW20_BASE_CODE_ID } from 'utils/constants'
 import type { DispatchExecuteArgs } from 'utils/contracts/cw20/execute'
 import { dispatchExecute, isEitherType, previewExecutePayload } from 'utils/contracts/cw20/execute'
@@ -41,6 +40,7 @@ const CW20InstantiatePage: NextPage = () => {
   const contract = useContracts().cw20Base
   const comboboxState = useExecuteComboboxState()
   const [lastTx, setLastTx] = useState('')
+  const data = useState('')
   const type = comboboxState.value?.id
 
   const nameState = useInputState({
@@ -150,6 +150,39 @@ const CW20InstantiatePage: NextPage = () => {
     title: 'Logo URL',
     placeholder: 'https://example.com/image.jpg',
   })
+  const mutate = async (event: FormEvent): Promise<InstantiateResponse | null> => {
+    event.preventDefault()
+    if (!shouldSubmit) {
+      throw new Error('Please fill required fields')
+    }
+    if (!contract) {
+      throw new Error('Smart contract connection failed')
+    }
+    const msg = {
+      name: nameState.value,
+      symbol: symbolState.value,
+      decimals: decimalsState.value || 6,
+      initial_balances: balancesState.values,
+      mint: {
+        minter: minterState.value,
+        cap: capState.value || null,
+      },
+      marketing: {
+        project: projectState.value,
+        description: descriptionState.value,
+        marketing: walletAddressState.value,
+        logo: {
+          url: logoUrlState.value,
+        },
+      },
+    }
+
+    return toast.promise(contract.instantiate(CW20_BASE_CODE_ID, msg, msg.name, wallet.address), {
+      loading: 'Creating contract...',
+      error: 'Creation failed!',
+      success: 'Success Creation!',
+    })
+  }
 
   const showAmountField = type && !isEitherType(type, ['update-logo', 'update-marketing'])
   const showMessageField = isEitherType(type, ['send', 'send-from'])
@@ -167,46 +200,6 @@ const CW20InstantiatePage: NextPage = () => {
     'mint',
   ])
 
-  const { data, isLoading, mutate } = useMutation(
-    async (event: FormEvent): Promise<InstantiateResponse | null> => {
-      event.preventDefault()
-      if (!shouldSubmit) {
-        throw new Error('Please fill required fields')
-      }
-      if (!contract) {
-        throw new Error('Smart contract connection failed')
-      }
-      const msg = {
-        name: nameState.value,
-        symbol: symbolState.value,
-        decimals: decimalsState.value || 6,
-        initial_balances: balancesState.values,
-        mint: {
-          minter: minterState.value,
-          cap: capState.value || null,
-        },
-        marketing: {
-          project: projectState.value,
-          description: descriptionState.value,
-          marketing: walletAddressState.value,
-          logo: {
-            url: logoUrlState.value,
-          },
-        },
-      }
-      return toast.promise(contract.instantiate(CW20_BASE_CODE_ID, msg, msg.name, wallet.address), {
-        loading: 'Creating contract...',
-        error: 'Creation failed!',
-        success: 'Success Creation!',
-      })
-    },
-    {
-      onError: (error) => {
-        toast.error(String(error))
-      },
-    },
-  )
-
   const messages = useMemo(() => contract?.use(contractState.value), [contract, wallet.address, contractState.value])
   const payload: DispatchExecuteArgs = {
     amount: amountState.value.toString(),
@@ -223,31 +216,23 @@ const CW20InstantiatePage: NextPage = () => {
     type,
   }
 
-  const { isExecuting, hmutate } = useMutation(
-    async (event: FormEvent) => {
-      event.preventDefault()
-      if (!type) {
-        throw new Error('Please select message type!')
-      }
-      const txHash = await toast.promise(dispatchExecute(payload), {
-        error: `${type.charAt(0).toUpperCase() + type.slice(1)} execute failed!`,
-        loading: 'Executing message...',
-        success: (tx) => `Transaction ${tx} success!`,
-      })
-      if (txHash) {
-        setLastTx(txHash)
-      }
-    },
-    {
-      onError: (error) => {
-        console.error(error)
-        toast.error(String(error))
-      },
-    },
-  )
+  const isLoading = false
+  const hmutate = async (event: FormEvent) => {
+    event.preventDefault()
+    if (!type) {
+      throw new Error('Please select message type!')
+    }
+    const txHash = await toast.promise(dispatchExecute(payload), {
+      error: `${type.charAt(0).toUpperCase() + type.slice(1)} execute failed!`,
+      loading: 'Executing message...',
+      success: (tx) => `Transaction ${tx} success!`,
+    })
 
-  const txHash = data?.transactionHash
-
+    if (txHash) {
+      setLastTx(txHash)
+    }
+  }
+  const txHash = data.transactionHash
   return (
     <form className="flex flex-col py-6 px-12 space-y-0" onSubmit={mutate}>
       <NextSeo title="Web3 Typography " />
